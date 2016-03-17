@@ -6,4 +6,18 @@ cp CNAME site
 rm site/*.py
 rm site/*.pyc
 
-REM git stash pop
+git stash save
+
+git checkout master
+
+xcopy /e /y site .
+
+git add -A
+
+git commit -m "Automatic build"
+
+git push origin master
+
+git checkout creation
+
+git stash pop
